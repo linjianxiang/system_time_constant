@@ -4,7 +4,7 @@ load simout.mat
 T = 3; %simulation time
 tau = 0.005 %delay
 f = 5;
-Fs = 1000;
+F = 1000;
 noise_amplitude = 1e-1;
 ramp_slope = -1;
 angle_sum = 0;
@@ -25,38 +25,35 @@ output_fft = fft(sine_damping_value);
 P2 = abs(output_fft/L);
 P1 = P2(1:L/2+1);
 P1(2:end-1) = 2*P1(2:end-1);
-f = Fs*(0:(L/2))/L;
-%plot(f,P1)
+f = F*(0:(L/2))/L;
+figure; plot(f,P1)
 
 %find frequency
 [~,index] = max(P1);
 f(index)
 
 %% using simout.mat (output of TE model)
-%let Fs = 1000
-Fs = 1000;
-signal2 = simout(:,2);
-signal2_delay = xmeas2_3_delay.signals.values(:,1);
-signal2_cdelay = xmeas2_3_cdelay.signals.values(:,1);
-singal3 = simout(:,3);
-
-%corr_method 
-[delay,~] = corr_method(signal2_delay,signal2);
-[delayc,~] = corr_method(signal2_cdelay,signal2);
-
-
-L = length(signal2);
-output_fft = fft(signal2);
-P2 = abs(output_fft/L);
-P1 = P2(1:L/2+1);
-P1(2:end-1) = 2*P1(2:end-1);
-f = Fs*(0:(L/2))/L;
-%plot(f,P1)
-
-%find frequency
-[~,index] = max(P1);
-freq = f(index)
-
-%
-[csd_delay,~] = csd_method(signal2_delay,signal2,Fs,freq);
-[csd_cdelay,~] = csd_method(signal2_cdelay,signal2,Fs,freq);
+%load data from simulation 
+n_signal = 6;
+sig_length = length(xmeas_delay.signals.values(:,1));
+signal_delay = zeros(n_signal,sig_length);
+signal_cdelay = zeros(n_signal,sig_length);
+sig_out = zeros(n_signal,sig_length);
+delay_all = zeros(4,n_signal);
+for i = 1:n_signal %xmeas 1 2 3 4 7 8
+    signal_delay(i,:) = xmeas_delay.signals.values(:,i);
+    signal_cdelay(i,:) = xmeas_cdelay.signals.values(:,i);
+end
+sig_out(1,:) = simout(:,1); %xmeas1
+sig_out(2,:) = simout(:,2); %xmeas2
+sig_out(3,:) = simout(:,3); %xmeas1
+sig_out(4,:) = simout(:,4); %xmeas1
+sig_out(5,:) = simout(:,7); %xmeas7
+sig_out(6,:) = simout(:,8); %xmeas8
+Fs = 100; %(72s 7200 samples => Fs = 100)
+for i = 1:n_signal
+    [delay_all(1,i),~] = corr_method(signal_delay(i,:),sig_out(i,:));
+    [delay_all(2,i),~] = corr_method(signal_cdelay(i,:),sig_out(i,:));
+    [delay_all(3,i),~] = csd_method(signal_delay(i,:),sig_out(i,:),Fs);
+    [delay_all(4,i),~] = csd_method(signal_cdelay(i,:),sig_out(i,:),Fs);
+end

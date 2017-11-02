@@ -1,3 +1,4 @@
+load simout.mat
 %% init damping sine simulation value
 % configuration
 T = 3; %simulation time
@@ -32,21 +33,33 @@ f = Fs*(0:(L/2))/L;
 f(index)
 
 %% using simout.mat (output of TE model)
-%let Fs = 1000
-Fs = 1000;
-signal2 = simout(:,2);
-signal2_delay = xmeas2_3_delay.signals.values(:,1);
+%load data from simulation 
+n_signal = 6;
+signal_delay = zeros(1,n_signal);
+signal_cdelay = zeros(1,n_signal);
+sig_out = zeros(1,n_signal);
+delay_all = zeros(4,n_signal);
+for i = 1:n_signal %xmeas 1 2 3 4 7 8
+    signal_delay(i) = xmeas_delay.signals.values(:,i);
+    signal_cdelay(i) = xmeas_cdelay.signals.values(:,i);
+end
+sig_out(1) = simout(:,1); %xmeas1
+sig_out(2) = simout(:,2); %xmeas2
+sig_out(3) = simout(:,3); %xmeas1
+sig_out(4) = simout(:,4); %xmeas1
+sig_out(5) = simout(:,7); %xmeas7
+sig_out(6) = simout(:,8); %xmeas8
+Fs = 100; %(72s 7200 samples => Fs = 100)
+for i = 1:n_signal
+    [delay_all(1,i),~] = corr_method(signal_delay(i),sig_out(i));
+    [delay_all(2,i),~] = corr_method(signal_cdelay(i),sig_out(i));
+    [delay_all(3,i),~] = csd_method(signal_delay(i),sig_out(i));
+    [delay_all(4,i),~] = csd_method(signal_cdelay(i),sig_out(i));
+end
+%corr_method  
+[delay,~] = corr_method(signal2_delay,signal2);
+[delayc,~] = corr_method(signal2_cdelay,signal2);
 
-
-
-L = length(signal2);
-output_fft = fft(signal2);
-P2 = abs(output_fft/L);
-P1 = P2(1:L/2+1);
-P1(2:end-1) = 2*P1(2:end-1);
-f = Fs*(0:(L/2))/L;
-%plot(f,P1)
-
-%find frequency
-[~,index] = max(P1);
-f(index)
+%
+[csd_delay,~] = csd_method(signal2_delay,signal2,Fs);
+[csd_cdelay,~] = csd_method(signal2_cdelay,signal2,Fs);
