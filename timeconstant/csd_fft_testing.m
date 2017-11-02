@@ -1,3 +1,4 @@
+load simout.mat
 %% init damping sine simulation value
 % configuration
 T = 3; %simulation time
