@@ -36,12 +36,7 @@ f(index)
 Fs = 1000;
 signal2 = simout(:,2);
 signal2_delay = xmeas2_3_delay.signals.values(:,1);
-signal2_cdelay = xmeas2_3_cdelay.signals.values(:,1);
-singal3 = simout(:,3);
 
-%corr_method 
-[delay,~] = corr_method(signal2_delay,signal2);
-[delayc,~] = corr_method(signal2_cdelay,signal2);
 
 
 L = length(signal2);
@@ -54,8 +49,4 @@ f = Fs*(0:(L/2))/L;
 
 %find frequency
 [~,index] = max(P1);
-freq = f(index)
-
-%
-[csd_delay,~] = csd_method(signal2_delay,signal2,Fs,freq);
-[csd_cdelay,~] = csd_method(signal2_cdelay,signal2,Fs,freq);
+f(index)

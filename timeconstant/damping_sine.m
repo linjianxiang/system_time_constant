@@ -17,7 +17,7 @@ function [csd_delay, corr_delay] = damping_sine(config);
         sine_damping_value = (sin_damping{1}.Values.Data(:));
         sine_damping_value = sine_damping_value(2:end); 
     %run csd method 
-        [csd_delay,Cxy,F1,Pxy,F2]  = csd_method(sine_noise_value,sine_damping_value,f,Fs);
+        [csd_delay,Cxy,F1,Pxy,F2]  = csd_method(sine_noise_value,sine_damping_value,Fs,f);
     %run corr method
         [corr_delay,lag_noise,acor_noise] = corr_method(sine_noise_value,sine_damping_value);
     %run csd fft method
