@@ -38,7 +38,7 @@ load xmeas_cdelay.mat
 load xmeas_delay.mat
 %% using simout.mat (output of TE model)
 %load data from simulation 
-n_signal = 4;
+n_signal = 3;
 sig_length = length(xmeas_delay.signals.values(:,1));
 signal_delay = zeros(n_signal,sig_length);
 signal_cdelay = zeros(n_signal,sig_length);
@@ -71,3 +71,4 @@ for i = 1:n_signal
     [delay_all(4,i),~] = csd_method(signal_cdelay(i,:),sig_out(i,:),Fs);
 end
 
+delay_all
