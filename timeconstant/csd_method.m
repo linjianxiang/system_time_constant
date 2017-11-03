@@ -44,15 +44,15 @@ function [csd_delay,Cxy,F1,Pxy,F2] = csd_method(noise_delay_signal,input_signal,
                        csd_delay = (pi+angle(Pxy(index)))/ (pi*f *2);
                  end
                 tau1 = 0.01; tau2 = 1;
-%                 figure;
-%                 subplot(3,1,1); plot(f_fft,P1);
-%                 subplot(3,1,2); plot(F1,Cxy);
-%                 title('Magnitude-Squared Coherence')           
-%                 subplot(3,1,3); plot(F2,angle(Pxy))
-%                 hold on
-%                 plot(F2,2*pi*f*tau1*ones(size(F2)),'--');
-%                % plot(F2,2*pi*f*tau2*ones(size(F2)),'--');
-%                 hold off
+                figure;
+                subplot(3,1,1); plot(f_fft,P1);
+                subplot(3,1,2); plot(F1,Cxy);
+                title('Magnitude-Squared Coherence')           
+                subplot(3,1,3); plot(F2,angle(Pxy))
+                hold on
+                plot(F2,2*pi*f*tau1*ones(size(F2)),'--');
+               % plot(F2,2*pi*f*tau2*ones(size(F2)),'--');
+                hold off
         otherwise 
                 Fs = 1000; %defual Fs = 1000
             %calculate frequency    

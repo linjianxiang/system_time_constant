@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.134"
+    ComputedModelVersion    "1.133"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -105,9 +105,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ljxia"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Nov 03 00:51:01 2017"
+  LastModifiedDate	  "Fri Nov 03 00:39:07 2017"
   RTWModifiedTimeStamp	  431570355
-  ModelVersionFormat	  "1.%<AutoIncrement:134>"
+  ModelVersionFormat	  "1.%<AutoIncrement:133>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -3374,7 +3374,6 @@ Model {
 	  ZOrder		  153
 	  ShowName		  off
 	  GotoTag		  "xmeas17"
-	  TagVisibility		  "global"
 	}
 	Block {
 	  BlockType		  From
@@ -3393,7 +3392,6 @@ Model {
 	  ZOrder		  155
 	  ShowName		  off
 	  GotoTag		  "xmeas40"
-	  TagVisibility		  "global"
 	}
 	Block {
 	  BlockType		  From
@@ -4777,19 +4775,18 @@ Model {
 	      "09803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.0745098039215686 0.623529411764706 1;1 0.411"
 	      "764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745098039215686;0.717647058823529 0.274509"
 	      "803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Title','%<SignalLabel>','LineProper"
-	      "tiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',15,'LineNames',{{'Transport Delay:1','Transport Delay"
-	      ":2','Transport Delay:3','Transport Delay:4','Transport Delay:5','Transport Delay:6','Transport Delay:7','Transp"
-	      "ort Delay:8','Transport Delay:9','Transport Delay:10','Transport Delay:11','Transport Delay:12','Transport Dela"
-	      "y:13','Transport Delay:14','Transport Delay:15'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',"
-	      "struct('MinYLimReal','4336.10972','MaxYLimReal','4540.14651','YLabelReal','','MinYLimMag','4336.10972','MaxYLim"
-	      "Mag','4540.14651','LegendVisibility','Off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'"
-	      "AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.0"
-	      "745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0."
-	      "0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.6509803921"
-	      "56863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',0,'LineNam"
-	      "es',{{[]}},'ShowContent',true,'Placement',1)),extmgr.Configuration('Tools','Plot Navigation',true,'OnceAtStop',"
-	      "false,'PreviousAutoscale','XY','PreviousZoomMode','Pan'),extmgr.Configuration('Tools','Measurements',true,'Vers"
-	      "ion','2017a')),'Version','2017a','Location',[268.333333333333 819 1241.66666666667 1334.33333333333])"
+	      "tiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',6,'LineNames',{{'Transport Delay:1','Transport Delay:"
+	      "2','Transport Delay:3','Transport Delay:4','Transport Delay:5','Transport Delay:6'}},'ShowContent',true,'Placem"
+	      "ent',1)},'DisplayPropertyDefaults',struct('MinYLimReal','4336.10972','MaxYLimReal','4540.14651','YLabelReal',''"
+	      ",'MinYLimMag','4336.10972','MaxYLimMag','4540.14651','LegendVisibility','Off','XGrid',true,'YGrid',true,'PlotMa"
+	      "gPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'Colo"
+	      "rOrder',[1 1 0.0666666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.3"
+	      "92156862745098 0.831372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 "
+	      "1;1 0.0745098039215686 0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChann"
+	      "elNames',{{}},'NumLines',0,'LineNames',{{[]}},'ShowContent',true,'Placement',1)),extmgr.Configuration('Tools','"
+	      "Plot Navigation',true,'OnceAtStop',false,'PreviousAutoscale','XY','PreviousZoomMode','Pan'),extmgr.Configuratio"
+	      "n('Tools','Measurements',true,'Version','2017a')),'Version','2017a','Location',[268.333333333333 819 1241.66666"
+	      "666667 1334.33333333333])"
 	      NumInputPorts	      "1"
 	    }
 	    Line {

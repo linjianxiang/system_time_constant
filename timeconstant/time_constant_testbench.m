@@ -1,9 +1,9 @@
 % configuration
-    T = 2; %simulation time
+    T = 4; %simulation time
     tau = 0.005 %delay
-    f = 5;
+    f = 50;
     Fs = 1000;
-    iteration_n = 2;
+    iteration_n = 1;
     %1e-7 max noise ~= 0.03 %1e-8 max noise ~= 0.01
     %1e-6 max noise ~= 0.1; 1e-5 max noise ~= 0.3 ; 1e-4 max noise ~=1
     noise_amplitude = 1e-5;
