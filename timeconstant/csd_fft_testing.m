@@ -18,20 +18,24 @@ sine_delay_value = sine_delay{1}.Values.Data(:);
 sine_noise_value = sine_noise_delay{1}.Values.Data(:);
 sine_damping_value = (sin_damping{1}.Values.Data(:));
 sine_damping_value = sine_damping_value(2:end);
+[Cxy,F] = mscohere(origin_sine,sine_damping_value);
 
-% apply fft
-L = length(sine_damping_value);
-output_fft = fft(sine_damping_value);
-P2 = abs(output_fft/L);
-P1 = P2(1:L/2+1);
-P1(2:end-1) = 2*P1(2:end-1);
-f = F*(0:(L/2))/L;
-figure; plot(f,P1)
+[Pxy,F] = cpsd(origin_sine,sine_damping_value);
 
-%find frequency
-[~,index] = max(P1);
-f(index)
+subplot(2,1,1)
+plot(F,Cxy)
+title('Magnitude-Squared Coherence')
 
+subplot(2,1,2)
+plot(F,angle(Pxy))
+
+hold on
+plot(F,2*pi*100*tau*ones(size(F)),'--')
+hold off
+
+xlabel('Hz')
+ylabel('\Theta(f)')
+title('Cross Spectrum Phase')
 %%
 load simout.mat
 load xmeas_cdelay.mat
