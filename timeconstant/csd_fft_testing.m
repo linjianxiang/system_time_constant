@@ -42,7 +42,7 @@ load xmeas_cdelay.mat
 load xmeas_delay.mat
 %% using simout.mat (output of TE model)
 %load data from simulation 
-n_signal = 3;
+n_signal = 15;
 sig_length = length(xmeas_delay.signals.values(:,1));
 signal_delay = zeros(n_signal,sig_length);
 signal_cdelay = zeros(n_signal,sig_length);
@@ -54,8 +54,8 @@ for i = 1:n_signal %xmeas 1 2 3 4 7 8 9 10 11 12 14 15 17 23 40
 end
 sig_out(1,:) = simout(:,1); %xmeas1
 sig_out(2,:) = simout(:,2); %xmeas2
-sig_out(3,:) = simout(:,3); %xmeas1
-sig_out(4,:) = simout(:,4); %xmeas1
+sig_out(3,:) = simout(:,3); %xmeas3
+sig_out(4,:) = simout(:,4); %xmeas4
 sig_out(5,:) = simout(:,7); %xmeas7
 sig_out(6,:) = simout(:,8); %xmeas8
 sig_out(7,:) = simout(:,9); %xmeas9
@@ -64,9 +64,9 @@ sig_out(9,:) = simout(:,11); %xmeas11
 sig_out(10,:) = simout(:,12); %xmeas12
 sig_out(11,:) = simout(:,14); %xmeas14
 sig_out(12,:) = simout(:,15); %xmeas15
-sig_out(13,:) = simout(:,17); %xmeas12
-sig_out(14,:) = simout(:,23); %xmeas14
-sig_out(15,:) = simout(:,40); %xmeas15
+sig_out(13,:) = simout(:,17); %xmeas17
+sig_out(14,:) = simout(:,23); %xmeas23
+sig_out(15,:) = simout(:,40); %xmeas40
 Fs = 100; %(72s 7200 samples => Fs = 100)
 for i = 1:n_signal
     [delay_all(1,i),~] = corr_method(signal_delay(i,:),sig_out(i,:));

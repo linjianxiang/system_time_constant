@@ -45,8 +45,15 @@ function [csd_delay,Cxy,F1,Pxy,F2] = csd_method(noise_delay_signal,input_signal,
 % %                %plot(F2,2*pi*f*tau2*ones(size(F2)),'--');
 % %                 hold off
             %find frequency from mscohere plot
+                [pks,locs] = findpeaks(Cxy);
                 [~,index] = max(Cxy);
-                f = F1(index)
+                f = F1(index);
+                if (f ~= 0)    
+                    f
+                else
+                    [peak_n, index_n] = nth_largest(pks,locs,3);
+                    f = F1(index_n)
+                end
              % find the angle of point with the maximum amplitude 
                 [~,index] = max(Cxy);
                  if (angle(Pxy(index))>0) 
@@ -54,14 +61,14 @@ function [csd_delay,Cxy,F1,Pxy,F2] = csd_method(noise_delay_signal,input_signal,
                  else
                        csd_delay = (pi+angle(Pxy(index)))/ (pi*f *2);
                  end
-                tau1 = 0.01; tau2 = 1;
-                figure;
-                subplot(2,1,1); plot(F1,Cxy);
-                title('Magnitude-Squared Coherence')           
-                subplot(2,1,2); plot(F2,angle(Pxy))
-                hold on
-                plot(F2,2*pi*f*tau1*ones(size(F2)),'--');
-                hold off
+%                 tau1 = 0.01; tau2 = 1;
+%                 figure;
+%                 subplot(2,1,1); plot(F1,Cxy);
+%                 title('Magnitude-Squared Coherence')           
+%                 subplot(2,1,2); plot(F2,angle(Pxy))
+%                 hold on
+%                 plot(F2,2*pi*f*tau1*ones(size(F2)),'--');
+%                 hold off
         otherwise 
                 Fs = 1000; %defual Fs = 1000
             %calculate frequency    
