@@ -4,7 +4,7 @@
 T = 3; %simulation time
 tau = 0.005 %delay
 f = 5;
-F = 1000;
+Fs = 1000;
 noise_amplitude = 1e-1;
 ramp_slope = -1;
 angle_sum = 0;
@@ -71,8 +71,8 @@ Fs = 100; %(72s 7200 samples => Fs = 100)
 for i = 1:n_signal
     [delay_all(1,i),~] = corr_method(signal_delay(i,:),sig_out(i,:));
     [delay_all(2,i),~] = corr_method(signal_cdelay(i,:),sig_out(i,:));
-    [delay_all(3,i),~] = csd_method(signal_delay(i,:),sig_out(i,:),Fs);
-    [delay_all(4,i),~] = csd_method(signal_cdelay(i,:),sig_out(i,:),Fs);
+    [delay_all(3,i),~] = csd_method(signal_delay(i,:),sig_out(i,:));
+    [delay_all(4,i),~] = csd_method(signal_cdelay(i,:),sig_out(i,:));
 end
 
 delay_all
