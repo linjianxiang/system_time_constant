@@ -3,7 +3,8 @@
 %input2 original signal
 %Output delay ~
 function [corr_delay,lag_noise,acor_noise] = corr_method(noise_delay_signal,input_signal);
-    
+%     noise_delay_signal = noise_delay_signal - mean(noise_delay_signal);
+%     input_signal = input_signal - mean(input_signal);
     % correlation method 
     %[acor_nonoise,lag_nonoise] = xcorr(sine_delay_value,input_signal);
     [acor_noise,lag_noise] = xcorr(noise_delay_signal,input_signal);

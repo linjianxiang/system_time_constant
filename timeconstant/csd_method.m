@@ -6,6 +6,8 @@
 %Fs sampling frequency
 %output delay,~
 function [csd_delay,Cxy,F1,Pxy,F2] = csd_method(noise_delay_signal,input_signal,Fs,f);
+    input_signal = input_signal - mean(input_signal);
+    noise_delay_signal = noise_delay_signal - mean(noise_delay_signal);
     switch nargin
         case 4
              % CSD method    
@@ -61,14 +63,14 @@ function [csd_delay,Cxy,F1,Pxy,F2] = csd_method(noise_delay_signal,input_signal,
                  else
                        csd_delay = (pi+angle(Pxy(index)))/ (pi*f *2);
                  end
-%                 tau1 = 0.01; tau2 = 1;
-%                 figure;
-%                 subplot(2,1,1); plot(F1,Cxy);
-%                 title('Magnitude-Squared Coherence')           
-%                 subplot(2,1,2); plot(F2,angle(Pxy))
-%                 hold on
-%                 plot(F2,2*pi*f*tau1*ones(size(F2)),'--');
-%                 hold off
+                tau1 = 0.01; tau2 = 1;
+                figure;
+                subplot(2,1,1); plot(F1,Cxy);
+                title('Magnitude-Squared Coherence')           
+                subplot(2,1,2); plot(F2,angle(Pxy))
+                hold on
+                plot(F2,2*pi*f*tau1*ones(size(F2)),'--');
+                hold off
         otherwise 
                 Fs = 1000; %defual Fs = 1000
             %calculate frequency    
