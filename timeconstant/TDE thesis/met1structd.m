@@ -9,10 +9,10 @@ function dtEst = met1structd(zIn, Ts)
         [A,B,C,D,F] = polydata(idpoly(modelSs));
         BFilt = 1;
         AFilt = C;
-        uFilt = filter(BFilt,AFilt,inSig);
+        uFilt = filter(BFilt,AFilt,inSig); %filter inSig by C
         yFilt = filter(BFilt,AFilt,outSig);
         zIn = [yFilt, uFilt];
-        na = 10; nb = 1; nkVec = 1:80;%nkVec = 1:20;
+        na = 2; nb = 2; nkVec = 1:50;
         dtEst = arxstructd(zIn,nkVec,na,nb);
      case 2
         inSig = zIn(:,2);
@@ -26,7 +26,7 @@ function dtEst = met1structd(zIn, Ts)
         uFilt = filter(BFilt,AFilt,inSig);
         yFilt = filter(BFilt,AFilt,outSig);
         zIn = [yFilt, uFilt];
-        na = 10; nb = 1; nkVec = 1:80;%nkVec = 1:20;
+        na = 2; nb = 2; nkVec = 1:20;
         dtEst = arxstructd(zIn,nkVec,na,nb);
  end
 end

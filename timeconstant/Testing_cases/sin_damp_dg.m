@@ -1,10 +1,10 @@
 %% sine_delay generate  %sin_delay = sin_delay = [origin_sine,sine_noise_delay,sine_noise_damping];
     % configuration
-    T = 2; %simulation time
+    T = 10; %simulation time
     f = 15;
     Fs = 1000;
     noise_amplitude = 1e-5;
-    ramp_slope = -1;
+    ramp_slope = -0.3;
 
     % random seed generator
     seed =  randi([0 1000],1);

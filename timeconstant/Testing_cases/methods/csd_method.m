@@ -1,7 +1,9 @@
-%csd method
+%delay =csd_method(zIn,Fs,nth);
 %zIn = [output,input]
+%Fs,nth are optional
+%Fs = SamplingFrequency
 % if 3 or 2 inputs nth_largest method
-% if 1 inputs fft method
+% if 1 input fft method
 function [csd_delay,Cxy,F1,Pxy,F2] = csd_method(zIn,Fs,nth);
     noise_delay_signal = zIn(1,:);
     input_signal = zIn(2,:);

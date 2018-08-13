@@ -1,7 +1,6 @@
-% corr_method 
-%input1 delay_signal
-%input2 original signal
-%Output delay ~
+% delay = corr_method(zIn)
+%zIn = [outSig, inSig];
+
 function [corr_delay,lag_noise,acor_noise] = corr_method(zIn);
     noise_delay_signal = zIn(1,:);
     input_signal = zIn(2,:);

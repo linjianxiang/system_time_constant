@@ -3,7 +3,10 @@
 % that simulation time is in vector "tout", 
 % plant outputs are in matrix "simout",
 % plant MVs are in matrix "xmv".
-
+% save 'TE_simout.mat' simout
+save 'TE_simout_fault.mat' simout
+save 'TE_xmv_fault.mat' xmv
+% save 'TE_xmv.mat' xmv
 TEdata.xy=[tout(:) simout(:,1:41)];
 TEdata.iy=cell(1,41); for i=1:41; TEdata.iy{i}=i; end
 TEdata.title=cell(1,41); TEdata.ylabel=cell(1,41);

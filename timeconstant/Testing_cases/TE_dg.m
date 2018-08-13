@@ -51,16 +51,13 @@
 % load simout.mat
 % load xmeas_cdelay.mat
 % load xmeas_delay.mat
-
-delay_tau = zeros(1,tau);
-delay_tau(1) = 1;
+Fs = 100;
 sim('MultiLoop_mode1');
-
-
 sig_length = length(xmeas_delay.signals.values(:,1));
 signal_delay = zeros(n_signal,sig_length);
 signal_cdelay = zeros(n_signal,sig_length);
 sig_out = zeros(n_signal,sig_length);
+
 for i = 1:n_signal %xmeas 1 2 3 4 7 8 9 10 11 12 14 15 17 23 40
     signal_delay(i,:) = xmeas_delay.signals.values(:,i);
     signal_cdelay(i,:) = xmeas_cdelay.signals.values(:,i);
@@ -80,7 +77,7 @@ sig_out(12,:) = simout(:,15); %xmeas15
 sig_out(13,:) = simout(:,17); %xmeas17
 sig_out(14,:) = simout(:,23); %xmeas23
 sig_out(15,:) = simout(:,40); %xmeas40
-Fs = 100; %(72s 7200 samples => Fs = 100)
+ %(72s 7200 samples => Fs = 100)
 
 % %% load close-loop 
 % sim('closeLoop');

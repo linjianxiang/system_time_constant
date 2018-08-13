@@ -15,3 +15,8 @@ Output3 = close_step_output3{1}.Values.Data;
 zIn1 = [Output1,Input];
 zIn2 = [Output2,Input];
 zIn3 = [Output3,Input];
+
+
+save 'closeloop_data1.mat' zIn1
+save 'closeloop_data2.mat' zIn2
+save 'closeloop_data3.mat' zIn3
